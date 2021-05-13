@@ -456,7 +456,17 @@ spec:
   type: LoadBalancer
 ```
 
-
+## Check on the VM
+```
+[root@orfdns 7u2a]# k get vm
+NAME                                        POWERSTATE   AGE
+mysql-centosvm                              poweredOn    2m44s
+tkg-berlin-control-plane-v65v8              poweredOn    3h53m
+tkg-berlin-workers-jtz4k-75dddb8999-2xmld   poweredOn    97m
+tkg-berlin-workers-jtz4k-75dddb8999-9n67g   poweredOn    3h42m
+tkg-berlin-workers-jtz4k-75dddb8999-djdt2   poweredOn    97m
+[root@orfdns 7u2a]# 
+```
 
 
 
