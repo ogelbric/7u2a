@@ -600,7 +600,7 @@ deployment.apps/wordpress created
 service/mysqldb created
 endpoints/mysqldb created
 ```
-## Here is the YAML (Note the image is in my google image repot it can also be found here:  )
+## Here is the YAML (Note the image is in my google image repot it can also be found here: at docker wordpress:5.7-apache )
                     (Note IP at end of YAML file has ot be updated with result from k get svc)
 ```
 # wordpress.yaml
@@ -696,7 +696,6 @@ subsets:
     port: 3306
     protocol: TCP
 ```
-
 
 
 ## Inspiration for all of this came from this blog
