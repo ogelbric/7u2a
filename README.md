@@ -709,6 +709,29 @@ subsets:
     port: 3306
     protocol: TCP
 ```
+## Testing if the POD is up
+```
+[root@orfdns 7u2a]# k get pods
+NAME                         READY   STATUS    RESTARTS   AGE
+wordpress-699976b7f4-rm585   1/1     Running   0          7m17s
+[root@orfdns 7u2a]# 
+[root@orfdns 7u2a]# k get pvc
+NAME          STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS                  AGE
+wp-pv-claim   Bound    pvc-41626c06-fcb9-4c98-b999-890603a89788   20Gi       RWO            pacific-gold-storage-policy   7m23s
+[root@orfdns 7u2a]# k get pv
+NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                 STORAGECLASS                  REASON   AGE
+pvc-41626c06-fcb9-4c98-b999-890603a89788   20Gi       RWO            Delete           Bound    default/wp-pv-claim   pacific-gold-storage-policy            7m26s
+[root@orfdns 7u2a]# 
+[root@orfdns 7u2a]# k get svc
+NAME         TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)        AGE
+kubernetes   ClusterIP      198.51.100.1     <none>         443/TCP        16m
+mysqldb      ClusterIP      198.51.100.236   <none>         3306/TCP       7m31s
+supervisor   ClusterIP      None             <none>         6443/TCP       15m
+wordpress    LoadBalancer   198.51.100.204   192.168.5.46   80:30043/TCP   7m32s
+[root@orfdns 7u2a]# 
+[root@orfdns 7u2a]# 
+```
+
 
 
 ## Inspiration for all of this came from this blog
