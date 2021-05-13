@@ -14,3 +14,4 @@ software-packages stage --iso
 software-packages list --staged
 software-packages install --staged
 ```
+[[vCenterVersion.png]]
