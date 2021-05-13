@@ -58,5 +58,40 @@ namespaceservice1
 
 ![Enable namespaceservice4](https://github.com/ogelbric/7u2a/blob/main/namespaceservice4.png)
 
+## Create the fist namespace via YAML file 
 
+Log onto supervisor cluster
+```
+[root@orfdns 7u2a]# alias l1540
+alias l1540='/usr/local/bin/kubectl-vsphere login --vsphere-username administrator@vsphere.local --server=https://192.168.5.40 --insecure-skip-tls-verify'
+[root@orfdns 7u2a]# l1540
 
+Password: 
+Logged in successfully.
+
+You have access to the following contexts:
+   192.168.5.40
+
+If the context you wish to use is not in this list, you may need to try
+logging in again later, or contact your cluster administrator.
+
+To change context, use `kubectl config use-context <workload name>`
+[root@orfdns 7u2a]# 
+[root@orfdns 7u2a]# k apply -f ./namespace1000.yaml 
+namespace/namespace1000 created
+[root@orfdns 7u2a]# 
+```
+Here is the namespace YAML file
+
+```
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: namespace1000  
+ ```
+ 
+ 
+ 
+ 
+ 
