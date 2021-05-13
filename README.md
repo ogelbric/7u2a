@@ -110,5 +110,90 @@ metadata:
  
  ![vmservice 6](https://github.com/ogelbric/7u2a/blob/main/vmservice6.png)
  
+## Create guest cluster
+```
+[root@orfdns 7u2a]# k apply -f ./tkg-cluster-berlin.yaml 
+tanzukubernetescluster.run.tanzu.vmware.com/tkg-berlin created
+[root@orfdns 7u2a]# 
+```
+Here is the YAMl file
+```
+apiVersion: run.tanzu.vmware.com/v1alpha1
+kind: TanzuKubernetesCluster
+metadata:
+  name: tkg-berlin
+  namespace: namespace1000
+spec:
+  distribution:
+    version: v1.18.5
+    fullVersion:
+  topology:
+    controlPlane:
+      count: 1
+      class: best-effort-small
+      storageClass: pacific-gold-storage-policy
+    workers:
+      count: 3
+      class: best-effort-small
+      storageClass: pacific-gold-storage-policy
+  settings:
+    network:
+      cni:
+        name: calico
+      services:
+        cidrBlocks: ["198.51.100.0/12"]
+      pods:
+        cidrBlocks: ["192.0.2.0/16"]
+```
+
+Check on the cluster
+```
+[root@orfdns 7u2a]# l1540
+
+Password: 
+Logged in successfully.
+
+You have access to the following contexts:
+   192.168.5.40
+   namespace1000
+
+If the context you wish to use is not in this list, you may need to try
+logging in again later, or contact your cluster administrator.
+
+To change context, use `kubectl config use-context <workload name>`
+[root@orfdns 7u2a]# k1
+Switched to context "namespace1000".
+[root@orfdns 7u2a]# k get tkc
+NAME         CONTROL PLANE   WORKER   DISTRIBUTION                     AGE     PHASE      TKR COMPATIBLE   UPDATES AVAILABLE
+tkg-berlin   1               1        v1.18.5+vmware.1-tkg.1.c40d30d   4m18s   creating   True             [1.19.7+vmware.1-tkg.1.fc82c41 1.18.15+vmware.1-tkg.1.600e412]
+[root@orfdns 7u2a]# 
+```
+
+## Generate a ssh key on your server
+```
+[root@orfdns .ssh]# ssh-keygen -t rsa -b 4096
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:HZq+oegejQHIcA3ck2t4GGUOGlvfoNH6N1AF0MGBtmc root@orfdns
+The key's randomart image is:
++---[RSA 4096]----+
+|o.**=*+=.        |
+|oBoBOo+          |
+|+.o*o=.   .      |
+|  +.* E  + .     |
+|   +.+  S .      |
+|    .+o.         |
+|    o...o        |
+|     o . o       |
+|   o+ . .        |
++----[SHA256]-----+
+```
+
+
 
  
