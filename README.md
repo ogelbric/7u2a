@@ -732,6 +732,7 @@ wordpress    LoadBalancer   198.51.100.204   192.168.5.46   80:30043/TCP   7m32s
 [root@orfdns 7u2a]# 
 ```
 
+ ![wordpress](https://github.com/ogelbric/7u2a/blob/main/wordpress.png)
 
 
 ## Inspiration for all of this came from this blog
@@ -750,7 +751,9 @@ https://github.com/ogelbric/7u2a/blob/mainTanzuWithAVI.pptx
 
 ## Trouble shooting
 ```
-for this blog k get events -w is always good 
+for this write up 
+kubectl get events -w
+is always good 
 ```
 
 ## VM console access 
