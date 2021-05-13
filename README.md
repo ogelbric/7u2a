@@ -60,7 +60,7 @@ namespaceservice1
 
 ## Create the fist namespace via YAML file 
 
-Log onto supervisor cluster
+Log onto supervisor cluster (I am showing the alias I have setup to make the login easier)
 ```
 [root@orfdns 7u2a]# alias l1540
 alias l1540='/usr/local/bin/kubectl-vsphere login --vsphere-username administrator@vsphere.local --server=https://192.168.5.40 --insecure-skip-tls-verify'
@@ -92,6 +92,9 @@ metadata:
  ```
  
  
- 
+![namespace result](https://github.com/ogelbric/7u2a/blob/main/namespaceresult.png)
+
+![namespace result from template](https://github.com/ogelbric/7u2a/blob/main/namespaceresultfromteplate.png)
+
  
  
