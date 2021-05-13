@@ -14,4 +14,4 @@ software-packages stage --iso
 software-packages list --staged
 software-packages install --staged
 ```
-!(https://github.com/ogelbric/7u2a/blob/main/vCenterVersion.png)
+![Version](https://github.com/ogelbric/7u2a/blob/main/vCenterVersion.png)
