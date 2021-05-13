@@ -495,8 +495,35 @@ telnet> quit
 Connection closed.
 ```
 
-## ssh to the VM
+## ssh to the VM (centos/VMware1! from the cloud-init.yaml file)
 ```
+[root@orfdns 7u2a]# ssh centos@192.168.5.44
+The authenticity of host '192.168.5.44 (192.168.5.44)' can't be established.
+ECDSA key fingerprint is SHA256:idAUzAEW8iVfaJcS161dqd0UCG5qfJM4d3a8pd0N5cQ.
+ECDSA key fingerprint is MD5:a3:b7:65:34:10:33:50:19:05:a5:a1:0b:15:15:19:da.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '192.168.5.44' (ECDSA) to the list of known hosts.
+[centos@centos-mysql ~]$ 
+[centos@centos-mysql ~]$ ifconfig -a
+ens192: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.7.58  netmask 255.255.255.0  broadcast 192.168.7.255
+        inet6 fe80::250:56ff:fe8c:cbec  prefixlen 64  scopeid 0x20<link>
+        ether 00:50:56:8c:cb:ec  txqueuelen 1000  (Ethernet)
+        RX packets 10986  bytes 52814074 (50.3 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 7493  bytes 469297 (458.2 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+[centos@centos-mysql ~]$ 
 ```
 
 
