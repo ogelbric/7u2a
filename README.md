@@ -744,7 +744,7 @@ https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-5D2
 ```
 ## My Personal AVI deployment/enablement can be found here 
 ```
-https://github.com/ogelbric/7u2a/blob/mainTanzuWithAVI.pptx
+https://github.com/ogelbric/7u2a/blob/main/TanzuWithAVI.pptx
 ```
 
 ## Trouble shooting
