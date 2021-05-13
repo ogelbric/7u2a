@@ -318,7 +318,61 @@ spec:
     vm-selector: mysql-centosvm
   type: LoadBalancer
   ```
-  
+  ## Some commannds to make sure everything is good
+  ```
+  [root@orfdns 7u2a]# k get nodes
+NAME                               STATUS   ROLES    AGE   VERSION
+420c9309ec6670a9a96e93ec914a445d   Ready    master   20h   v1.19.1+wcp.3
+420c9eba86c0cc85380c88e784bddcd7   Ready    master   20h   v1.19.1+wcp.3
+420ca783dbc48c2746ce30f6f42698b1   Ready    master   20h   v1.19.1+wcp.3
+[root@orfdns 7u2a]# 
+[root@orfdns 7u2a]# kubectl get virtualmachineclassbindings
+NAME                  VIRTUALMACHINECLASS   AGE
+best-effort-2xlarge   best-effort-2xlarge   175m
+best-effort-4xlarge   best-effort-4xlarge   175m
+best-effort-8xlarge   best-effort-8xlarge   175m
+best-effort-large     best-effort-large     175m
+best-effort-medium    best-effort-medium    175m
+best-effort-small     best-effort-small     175m
+best-effort-xlarge    best-effort-xlarge    175m
+best-effort-xsmall    best-effort-xsmall    175m
+[root@orfdns 7u2a]# kubectl get virtualmachineimages
+NAME                                                         VERSION                           OSTYPE                FORMAT   AGE
+centos-stream-8-vmservice-v1alpha1-1619529007339                                               centos8_64Guest       ovf      173m
+ob-15957779-photon-3-k8s-v1.16.8---vmware.1-tkg.3.60d2ffd    v1.16.8+vmware.1-tkg.3.60d2ffd    vmwarePhoton64Guest   ovf      20h
+ob-16466772-photon-3-k8s-v1.17.7---vmware.1-tkg.1.154236c    v1.17.7+vmware.1-tkg.1.154236c    vmwarePhoton64Guest   ovf      20h
+ob-16545581-photon-3-k8s-v1.16.12---vmware.1-tkg.1.da7afe7   v1.16.12+vmware.1-tkg.1.da7afe7   vmwarePhoton64Guest   ovf      20h
+ob-16551547-photon-3-k8s-v1.17.8---vmware.1-tkg.1.5417466    v1.17.8+vmware.1-tkg.1.5417466    vmwarePhoton64Guest   ovf      20h
+ob-16897056-photon-3-k8s-v1.16.14---vmware.1-tkg.1.ada4837   v1.16.14+vmware.1-tkg.1.ada4837   vmwarePhoton64Guest   ovf      20h
+ob-16924026-photon-3-k8s-v1.18.5---vmware.1-tkg.1.c40d30d    v1.18.5+vmware.1-tkg.1.c40d30d    vmwarePhoton64Guest   ovf      20h
+ob-16924027-photon-3-k8s-v1.17.11---vmware.1-tkg.1.15f1e18   v1.17.11+vmware.1-tkg.1.15f1e18   vmwarePhoton64Guest   ovf      20h
+ob-17010758-photon-3-k8s-v1.17.11---vmware.1-tkg.2.ad3d374   v1.17.11+vmware.1-tkg.2.ad3d374   vmwarePhoton64Guest   ovf      20h
+ob-17332787-photon-3-k8s-v1.17.13---vmware.1-tkg.2.2c133ed   v1.17.13+vmware.1-tkg.2.2c133ed   vmwarePhoton64Guest   ovf      20h
+ob-17419070-photon-3-k8s-v1.18.10---vmware.1-tkg.1.3a6cd48   v1.18.10+vmware.1-tkg.1.3a6cd48   vmwarePhoton64Guest   ovf      20h
+ob-17654937-photon-3-k8s-v1.18.15---vmware.1-tkg.1.600e412   v1.18.15+vmware.1-tkg.1.600e412   vmwarePhoton64Guest   ovf      20h
+ob-17658793-photon-3-k8s-v1.17.17---vmware.1-tkg.1.d44d45a   v1.17.17+vmware.1-tkg.1.d44d45a   vmwarePhoton64Guest   ovf      20h
+ob-17660956-photon-3-k8s-v1.19.7---vmware.1-tkg.1.fc82c41    v1.19.7+vmware.1-tkg.1.fc82c41    vmwarePhoton64Guest   ovf      20h
+ob-17861429-photon-3-k8s-v1.20.2---vmware.1-tkg.1.1d4f79a    v1.20.2+vmware.1-tkg.1.1d4f79a    vmwarePhoton64Guest   ovf      20h
+[root@orfdns 7u2a]# kubectl get resourcequotas
+NAME                         AGE    REQUEST                                                                                           LIMIT
+namespace1000                3h5m   requests.storage: 0/200Gi                                                                         
+namespace1000-storagequota   3h5m   pacific-gold-storage-policy.storageclass.storage.k8s.io/requests.storage: 0/9223372036854775807   
+[root@orfdns 7u2a]# k get sc
+NAME                          PROVISIONER              RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
+pacific-gold-storage-policy   csi.vsphere.vmware.com   Delete          Immediate           true                   3h15m
+```
+### Deploy the VM via YAML file
+```
+[root@orfdns 7u2a]# k apply -f ./vm.yaml 
+persistentvolumeclaim/mysql-pvc created
+virtualmachine.vmoperator.vmware.com/mysql-centosvm created
+configmap/centos-cloudinit created
+virtualmachineservice.vmoperator.vmware.com/mysql-vmservices created
+[root@orfdns 7u2a]# 
+```
+
+
+
 
 
 
