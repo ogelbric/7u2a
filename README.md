@@ -112,12 +112,14 @@ metadata:
  
 ## Create guest cluster
 ```
-[root@orfdns 7u2a]# k apply -f ./tkg-cluster-berlin.yaml 
+[root@orfdns 7u2a]# k apply -f ./cluster.yaml 
 tanzukubernetescluster.run.tanzu.vmware.com/tkg-berlin created
 [root@orfdns 7u2a]# 
 ```
-Here is the YAMl file
+Here is the cluster YAMl file
 ```
+# cluster.yaml
+---
 apiVersion: run.tanzu.vmware.com/v1alpha1
 kind: TanzuKubernetesCluster
 metadata:
@@ -125,25 +127,35 @@ metadata:
   namespace: namespace1000
 spec:
   distribution:
-    version: v1.18.5
-    fullVersion:
+    version: v1.18.15
   topology:
     controlPlane:
       count: 1
-      class: best-effort-small
+      class: best-effort-medium
       storageClass: pacific-gold-storage-policy
+      volumes:
+        - name: etcd
+          mountPath: /var/lib/etcd
+          capacity:
+            storage: 4Gi
     workers:
-      count: 3
-      class: best-effort-small
+      count: 2
+      class: best-effort-medium
       storageClass: pacific-gold-storage-policy
+      volumes:
+        - name: containerd
+          mountPath: /var/lib/containerd
+          capacity:
+            storage: 30Gi
   settings:
     network:
-      cni:
-        name: calico
       services:
-        cidrBlocks: ["198.51.100.0/12"]
+        cidrBlocks: ["198.51.100.0/24"]
       pods:
-        cidrBlocks: ["192.0.2.0/16"]
+        cidrBlocks: ["192.0.2.0/22"]
+    storage:
+      classes: ["pacific-gold-storage-policy"]
+      defaultClass: pacific-gold-storage-policy      
 ```
 
 Check on the cluster
