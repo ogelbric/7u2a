@@ -707,6 +707,31 @@ https://navneet-verma.medium.com/the-new-modern-workload-on-vsphere-fed63d57ff8d
 https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-F81E3535-C275-4DDE-B35F-CE759EA3B4A0.html
 https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-5D254A77-AB6B-40AB-AB27-1AE6A917DC52.html
 ```
+## My Personal AVI deployment/enablement can be found here 
+```
+https://github.com/ogelbric/7u2a/blob/mainTanzuWithAVI.pptx
+```
+
+## Trouble shooting
+```
+for this blog k get events -w is always good 
+```
+
+## VM console access 
+I have to test this again
+```
+As Administrator:
+Menu -> Administration -> Users and Groups -> Users -> Domain vsphere.local -> ADD -> username wcpadmin -> password VMware1! -> ADD
+Menu -> Host and Clusters -> left side select vcenter -> Permissions -> + (add permission) -> Domain vsphere.local User/Group wcpadmin Role Administrator Propagate to Children (select) -> OK 
+Menu -> Administration -> Users and Groups -> Groups -> Pages 2 find ServiceProvidersUsers -> select round circle -> Edit -> Add Memebers Search  type wcpadmin => green entry -> Save
+Log out 
+Log in as wcpadmin@vsphere.local
+Select VM and open web console
+```
+
+
+
+
 
 
 
