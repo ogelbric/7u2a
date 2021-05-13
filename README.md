@@ -22,4 +22,6 @@ Use this link and probably set download when needed (there are 14 images in the 
 ```
 https://wp-content.vmware.com/v2/latest/lib.json
 ```
+![Content lib for k8 guestclusters](https://github.com/ogelbric/7u2a/blob/main/contentlibfork8.png)
+
 
