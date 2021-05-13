@@ -525,6 +525,74 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
 
 [centos@centos-mysql ~]$ 
 ```
+## Log onto guest cluster and swap context (login alias shown)
+```
+[root@orfdns 7u2a]# alias l2540
+alias l2540='kubectl vsphere login --server 192.168.5.40 \
+                --vsphere-username administrator@vsphere.local \
+                --managed-cluster-namespace namespace1000 \
+                --managed-cluster-name tkg-berlin \
+                --insecure-skip-tls-verify'
+[root@orfdns 7u2a]# l2540
+
+Password: 
+Logged in successfully.
+
+You have access to the following contexts:
+   192.168.5.40
+   namespace1000
+   tkg-berlin
+
+If the context you wish to use is not in this list, you may need to try
+logging in again later, or contact your cluster administrator.
+
+To change context, use `kubectl config use-context <workload name>`
+[root@orfdns 7u2a]# kubectl config use-context tkg-berlin
+Switched to context "tkg-berlin".
+[root@orfdns 7u2a]# k get nodes
+NAME                                        STATUS   ROLES    AGE    VERSION
+tkg-berlin-control-plane-v65v8              Ready    master   4h7m   v1.18.5+vmware.1
+tkg-berlin-workers-jtz4k-75dddb8999-2xmld   Ready    <none>   113m   v1.18.5+vmware.1
+tkg-berlin-workers-jtz4k-75dddb8999-9n67g   Ready    <none>   4h1m   v1.18.5+vmware.1
+tkg-berlin-workers-jtz4k-75dddb8999-djdt2   Ready    <none>   113m   v1.18.5+vmware.1
+[root@orfdns 7u2a]# 
+```
+## Deploy permissions YAML
+```
+[root@orfdns ~]# k apply -f ./authorize-psp-for-gc-service-accounts.yaml
+clusterrole.rbac.authorization.k8s.io/psp:privileged created
+clusterrolebinding.rbac.authorization.k8s.io/all:psp:privileged created
+```
+## Here is the YAML
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: psp:privileged
+rules:
+- apiGroups: ['policy']
+  resources: ['podsecuritypolicies']
+  verbs:     ['use']
+  resourceNames:
+  - vmware-system-privileged
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: all:psp:privileged
+roleRef:
+  kind: ClusterRole
+  name: psp:privileged
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: Group
+  name: system:serviceaccounts
+  apiGroup: rbac.authorization.k8s.io
+[root@orfdns ~]# 
+```
+## Deploy Wordpress
+
+
 
 
 
