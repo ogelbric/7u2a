@@ -699,6 +699,15 @@ subsets:
 
 
 
+## Inspiration for all of this came from this blog
+```
+https://navneet-verma.medium.com/the-new-modern-workload-on-vsphere-fed63d57ff8d
+```
+## The official VMware doc is here 
+```
+https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-F81E3535-C275-4DDE-B35F-CE759EA3B4A0.html
+https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-5D254A77-AB6B-40AB-AB27-1AE6A917DC52.html
+```
 
 
 
