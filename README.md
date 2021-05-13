@@ -472,6 +472,32 @@ tkg-berlin-workers-jtz4k-75dddb8999-djdt2   poweredOn    97m
 ```
  ![running vm](https://github.com/ogelbric/7u2a/blob/main/vmrunning.png)
 
+## Testing the ingress connection on port 22 and 3306
+```[root@orfdns 7u2a]# k get svc
+NAME                               TYPE           CLUSTER-IP   EXTERNAL-IP    PORT(S)                       AGE
+mysql-vmservices                   LoadBalancer   10.96.0.58   192.168.5.44   22:32553/TCP,3306:31187/TCP   16m
+tkg-berlin-control-plane-service   LoadBalancer   10.96.0.94   192.168.5.42   6443:31266/TCP                4h7m
+[root@orfdns 7u2a]# 
+[root@orfdns 7u2a]# telnet 192.168.5.44 22
+Trying 192.168.5.44...
+Connected to 192.168.5.44.
+Escape character is '^]'.
+SSH-2.0-OpenSSH_8.0
+^]
+telnet> quit
+Connection closed.
+[root@orfdns 7u2a]# telnet 192.168.5.44 3306
+Trying 192.168.5.44...
+Connected to 192.168.5.44.
+Escape character is '^]'.
+      mysql_native_password^]
+telnet> quit
+Connection closed.
+```
+
+## ssh to the VM
+```
+```
 
 
 
