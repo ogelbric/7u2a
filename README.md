@@ -1,4 +1,4 @@
-# vCenter update 7.0.2a (7u2a) deliveres the VMware Operator. 
+# vCenter update 7.0.2a (7u2a) delivers the VMware Operator. 
 
 ## Upgrade your vCenter to 7.0.2a via ISO mount onto vCenter VM.
 
