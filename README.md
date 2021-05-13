@@ -24,4 +24,11 @@ https://wp-content.vmware.com/v2/latest/lib.json
 ```
 ![Content lib for k8 guestclusters](https://github.com/ogelbric/7u2a/blob/main/contentlibfork8.png)
 
+## Create content lib for VMware operator
+
+The image is located at the VMware cloud marketplace (login and download)
+```
+https://marketplace.cloud.vmware.com/services/details/vm-service-image-for-centos1111?slug=true
+```
+![Content lib for VMware Operator1](https://github.com/ogelbric/7u2a/blob/main/contentlibforvmwareoperator1.png)
 
