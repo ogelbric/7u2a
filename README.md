@@ -15,3 +15,11 @@ software-packages list --staged
 software-packages install --staged
 ```
 ![Version](https://github.com/ogelbric/7u2a/blob/main/vCenterVersion.png)
+
+## Create content lib for k8 cluster 
+
+Use this link and probably set download when needed (there are 14 images in the lib (5-13-2021)
+```
+https://wp-content.vmware.com/v2/latest/lib.json
+```
+
