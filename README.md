@@ -171,7 +171,7 @@ tkg-berlin   1               3        v1.18.5+vmware.1-tkg.1.c40d30d   4m18s   c
  ![guest cluster](https://github.com/ogelbric/7u2a/blob/main/guestcluster.png)
 
 
-## Generate a ssh key on your server
+## Generate a ssh key on your server (needed for cloud-init.yaml file for VM to log into)
 ```
 [root@orfdns .ssh]# ssh-keygen -t rsa -b 4096
 Generating public/private rsa key pair.
