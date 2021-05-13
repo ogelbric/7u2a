@@ -201,6 +201,52 @@ The key's randomart image is:
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCjr5LYVTa63c4XMsh8O680QZaj9ZPQ7RySbnH81MbqJKf2gfmwVHqoPL0gEB3ypKj1otDy5SVrNZBsw1KvnNM9oU5fB//aWSrGLQvCCTWsyqMhGlMCQBPwtnFyAOZSClf+wVzpEPhf5W8V6g8OY0m/rh4Ukr03GqX7wCuhFk4/X+Ujx7NBUnvbZV6MnDCBj0DRAfeBaZctJXTrIGeRcUJ4Rsl+4TN+N6noQ7Z2ewnBZY8IyzJTNaIHCddWJeJGn0WaiFoalERijRSzlgtKbiLtC/Jd2/+SrJIRUPq8ChrKlF24bt1RyOIqeGRXB/J8aU3AJDr9BPe5GjfcMYY/cb1m1m4S0y5uUi3ob4pRYl/q6eo8M1YIjEHK1IBA7iGPkBqV71sOVP3T/6oK0ZppxqCwADMbfwAr9SCMVun5PpnI9MOVjEwj7pHMdJJwmFkc1QK3lE2yBT5o2iPup8DozRLENzDeXnUhvMJW6POJIkoexLN6TU+LDY/AMd40k3GwJ+lVQdehAedsnYN/64+lAIICjYupgK0tG25C+YStd14yAM/aTFcZ9MXyDzbs433f/OSlgh/+hUyVN5Z26obrg6UXyXN6FCaed4qv/hCjM7tiDdHcmbQlhH3WhpBPlJJquIyiq8wKmwkKJuNWxSqQ9tpoLpgEnA55ucPIfXzewuKb6Q== root@orfdns
 [root@orfdns 7u2a]# 
 ```
+Here is the cloud-init.yaml file 
+```
+#cloud-config
+chpasswd:
+    list: |
+      centos:VMware1!
+    expire: false
+ssh_pwauth: True
+groups:
+  - docker
+users:
+  - default
+  - name: centos
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCjr5LYVTa63c4XMsh8O680QZaj9ZPQ7RySbnH81MbqJKf2gfmwVHqoPL0gEB3ypKj1otDy5SVrNZBsw1KvnNM9oU5fB//aWSrGLQvCCTWsyqMhGlMCQBPwtnFyAOZSClf+wVzpEPhf5W8V6g8OY0m/rh4Ukr03GqX7wCuhFk4/X+Ujx7NBUnvbZV6MnDCBj0DRAfeBaZctJXTrIGeRcUJ4Rsl+4TN+N6noQ7Z2ewnBZY8IyzJTNaIHCddWJeJGn0WaiFoalERijRSzlgtKbiLtC/Jd2/+SrJIRUPq8ChrKlF24bt1RyOIqeGRXB/J8aU3AJDr9BPe5GjfcMYY/cb1m1m4S0y5uUi3ob4pRYl/q6eo8M1YIjEHK1IBA7iGPkBqV71sOVP3T/6oK0ZppxqCwADMbfwAr9SCMVun5PpnI9MOVjEwj7pHMdJJwmFkc1QK3lE2yBT5o2iPup8DozRLENzDeXnUhvMJW6POJIkoexLN6TU+LDY/AMd40k3GwJ+lVQdehAedsnYN/64+lAIICjYupgK0tG25C+YStd14yAM/aTFcZ9MXyDzbs433f/OSlgh/+hUyVN5Z26obrg6UXyXN6FCaed4qv/hCjM7tiDdHcmbQlhH3WhpBPlJJquIyiq8wKmwkKJuNWxSqQ9tpoLpgEnA55ucPIfXzewuKb6Q== root@orfdns
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: sudo, docker
+    shell: /bin/bash
+network:
+  version: 2
+  ethernets:
+      ens192:
+          dhcp4: true
+package_update: true
+packages:
+  - mysql-server
+  - net-tools
+runcmd:
+  - systemctl enable mysqld
+  - systemctl start mysqld
+  - sudo mysql -e "CREATE DATABASE wordpress;"
+  - sudo mysql -e "CREATE USER 'wordpress_user'@'%' IDENTIFIED BY 'password';"
+  - sudo mysql -e "GRANT ALL ON wordpress.* TO 'wordpress_user'@'%'"
+  - sudo mysql -e "FLUSH PRIVILEGES;"
+  - sed -i '$abind-address=0.0.0.0' /etc/my.cnf.d/mysql-server.cnf
+  - systemctl restart mysqld
+  - firewall-offline-cmd --add-port=3306/tcp
+  - firewall-cmd --reload
+  - systemctl restart sshd
+```
+## Now convert the cloud-init.yaml file to base 64
+```
+```
+
+
+
 
 
 
