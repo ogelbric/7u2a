@@ -754,8 +754,8 @@ kubectl get events -w
 is always good 
 ```
 
-## VM console access 
-I have to test this again
+## VM console access (works in 7.0.2a)
+
 ```
 As Administrator:
 Menu -> Administration -> Users and Groups -> Users -> Domain vsphere.local -> ADD -> username wcpadmin -> password VMware1! -> ADD
