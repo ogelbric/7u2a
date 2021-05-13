@@ -50,6 +50,13 @@ vCenter WCP enabled Cluster -> Configure -> General -> Namespace Service
 
 namespaceservice1
 
+![Enable namespaceservice1](https://github.com/ogelbric/7u2a/blob/main/namespaceservice1.png)
+
+![Enable namespaceservice2](https://github.com/ogelbric/7u2a/blob/main/namespaceservice2.png)
+
+![Enable namespaceservice3](https://github.com/ogelbric/7u2a/blob/main/namespaceservice3.png)
+
+![Enable namespaceservice4](https://github.com/ogelbric/7u2a/blob/main/namespaceservice4.png)
 
 
 
