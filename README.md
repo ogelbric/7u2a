@@ -44,5 +44,12 @@ https://marketplace.cloud.vmware.com/services/details/vm-service-image-for-cento
 
 ![Content lib for VMware Operator7](https://github.com/ogelbric/7u2a/blob/main/contentlibforvmwareoperator7.png)
 
+## Enable the namespace service (enables yaml ns creation for developers) 
+
+vCenter WCP enabled Cluster -> Configure -> General -> Namespace Service
+
+namespaceservice1
+
+
 
 
