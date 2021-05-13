@@ -91,10 +91,12 @@ metadata:
   name: namespace1000  
  ```
  
- 
 ![namespace result](https://github.com/ogelbric/7u2a/blob/main/namespaceresult.png)
 
 ![namespace result from template](https://github.com/ogelbric/7u2a/blob/main/namespaceresultfromteplate.png)
 
+ ## Manual step 
+ As of this writting 5-13-2021 the VMservice is not part of the template and hence not part of the YAML and has to be set up by hand
+ 
  
  
