@@ -320,12 +320,12 @@ spec:
   ```
   ## Some commannds to make sure everything is good
   ```
-  [root@orfdns 7u2a]# k get nodes
+[root@orfdns 7u2a]# k get nodes
 NAME                               STATUS   ROLES    AGE   VERSION
 420c9309ec6670a9a96e93ec914a445d   Ready    master   20h   v1.19.1+wcp.3
 420c9eba86c0cc85380c88e784bddcd7   Ready    master   20h   v1.19.1+wcp.3
 420ca783dbc48c2746ce30f6f42698b1   Ready    master   20h   v1.19.1+wcp.3
-[root@orfdns 7u2a]# 
+
 [root@orfdns 7u2a]# kubectl get virtualmachineclassbindings
 NAME                  VIRTUALMACHINECLASS   AGE
 best-effort-2xlarge   best-effort-2xlarge   175m
@@ -336,6 +336,7 @@ best-effort-medium    best-effort-medium    175m
 best-effort-small     best-effort-small     175m
 best-effort-xlarge    best-effort-xlarge    175m
 best-effort-xsmall    best-effort-xsmall    175m
+
 [root@orfdns 7u2a]# kubectl get virtualmachineimages
 NAME                                                         VERSION                           OSTYPE                FORMAT   AGE
 centos-stream-8-vmservice-v1alpha1-1619529007339                                               centos8_64Guest       ovf      173m
@@ -353,15 +354,17 @@ ob-17654937-photon-3-k8s-v1.18.15---vmware.1-tkg.1.600e412   v1.18.15+vmware.1-t
 ob-17658793-photon-3-k8s-v1.17.17---vmware.1-tkg.1.d44d45a   v1.17.17+vmware.1-tkg.1.d44d45a   vmwarePhoton64Guest   ovf      20h
 ob-17660956-photon-3-k8s-v1.19.7---vmware.1-tkg.1.fc82c41    v1.19.7+vmware.1-tkg.1.fc82c41    vmwarePhoton64Guest   ovf      20h
 ob-17861429-photon-3-k8s-v1.20.2---vmware.1-tkg.1.1d4f79a    v1.20.2+vmware.1-tkg.1.1d4f79a    vmwarePhoton64Guest   ovf      20h
+
 [root@orfdns 7u2a]# kubectl get resourcequotas
 NAME                         AGE    REQUEST                                                                                           LIMIT
 namespace1000                3h5m   requests.storage: 0/200Gi                                                                         
 namespace1000-storagequota   3h5m   pacific-gold-storage-policy.storageclass.storage.k8s.io/requests.storage: 0/9223372036854775807   
+
 [root@orfdns 7u2a]# k get sc
 NAME                          PROVISIONER              RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
 pacific-gold-storage-policy   csi.vsphere.vmware.com   Delete          Immediate           true                   3h15m
 ```
-## get the network name
+## Get the network name (update the vm.yaml file with this)
 ```
 [root@orfdns 7u2a]# kubectl get network
 NAME        AGE
@@ -467,6 +470,7 @@ tkg-berlin-workers-jtz4k-75dddb8999-9n67g   poweredOn    3h42m
 tkg-berlin-workers-jtz4k-75dddb8999-djdt2   poweredOn    97m
 [root@orfdns 7u2a]# 
 ```
+ ![running vm](https://github.com/ogelbric/7u2a/blob/main/runningvm.png)
 
 
 
