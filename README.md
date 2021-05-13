@@ -604,7 +604,6 @@ subjects:
 [root@orfdns ~]# 
 ```
 ## Deploy Wordpress
-
 ```
 [root@orfdns 7u2a]# k apply -f ./wordpress.yaml 
 service/wordpress created
@@ -613,8 +612,9 @@ deployment.apps/wordpress created
 service/mysqldb created
 endpoints/mysqldb created
 ```
-## Here is the YAML (Note the image is in my google image repot it can also be found here: at docker wordpress:5.7-apache )
-                    (Note IP at end of YAML file has ot be updated with result from k get svc)
+## Here is the wordpress YAML 
+(Note the image is in my google image repot it can also be found here: at docker wordpress:5.7-apache )
+(Note IP at end of YAML file has ot be updated with result from k get svc)
 ```
 # wordpress.yaml
 ---
@@ -731,9 +731,7 @@ wordpress    LoadBalancer   198.51.100.204   192.168.5.46   80:30043/TCP   7m32s
 [root@orfdns 7u2a]# 
 [root@orfdns 7u2a]# 
 ```
-
  ![wordpress](https://github.com/ogelbric/7u2a/blob/main/wordpress.png)
-
 
 ## Inspiration for all of this came from this blog
 ```
@@ -766,6 +764,12 @@ Menu -> Administration -> Users and Groups -> Groups -> Pages 2 find ServiceProv
 Log out 
 Log in as wcpadmin@vsphere.local
 Select VM and open web console
+```
+
+## Another alias
+```
+[root@orfdns 7u2a]# alias k
+alias k='kubectl'
 ```
 
 
