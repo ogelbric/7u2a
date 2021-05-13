@@ -592,7 +592,110 @@ subjects:
 ```
 ## Deploy Wordpress
 
-
+```
+[root@orfdns 7u2a]# k apply -f ./wordpress.yaml 
+service/wordpress created
+persistentvolumeclaim/wp-pv-claim created
+deployment.apps/wordpress created
+service/mysqldb created
+endpoints/mysqldb created
+```
+## Here is the YAML (Note the image is in my google image repot it can also be found here:  )
+                    (Note IP at end of YAML file has ot be updated with result from k get svc)
+```
+# wordpress.yaml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress
+  labels:
+    app: wordpress
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: wordpress
+    tier: frontend
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: wp-pv-claim
+  labels:
+    app: wordpress
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress
+  labels:
+    app: wordpress
+spec:
+  selector:
+    matchLabels:
+      app: wordpress
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: wordpress
+        tier: frontend
+    spec:
+      containers:
+      - image: gcr.io/boreal-rain-XXXXXXXXXXX/wordpress:5.7-apache
+        name: wordpress
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: "$(MYSQLDB_SERVICE_HOST)"
+        - name: WORDPRESS_DB_PASSWORD
+          value: "password"
+        - name: WORDPRESS_DB_USER
+          value: "wordpress_user"
+        ports:
+        - containerPort: 80
+          name: wordpress
+        volumeMounts:
+        - name: wordpress-persistent-storage
+          mountPath: /var/www/html
+      volumes:
+      - name: wordpress-persistent-storage
+        persistentVolumeClaim:
+          claimName: wp-pv-claim
+#      imagePullSecrets:
+#      - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysqldb
+spec:
+  ports:
+  - name: mysql
+    port: 3306
+    protocol: TCP
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: mysqldb
+subsets:
+- addresses:
+  - ip: 192.168.5.54
+  ports:
+  - name: mysql
+    port: 3306
+    protocol: TCP
+```
 
 
 
