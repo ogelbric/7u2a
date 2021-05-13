@@ -361,7 +361,14 @@ namespace1000-storagequota   3h5m   pacific-gold-storage-policy.storageclass.sto
 NAME                          PROVISIONER              RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
 pacific-gold-storage-policy   csi.vsphere.vmware.com   Delete          Immediate           true                   3h15m
 ```
-### Deploy the VM via YAML file
+## get the network name
+```
+[root@orfdns 7u2a]# kubectl get network
+NAME        AGE
+network-1   4h2m
+[root@orfdns 7u2a]# 
+```
+## Deploy the VM via YAML file
 ```
 [root@orfdns 7u2a]# k apply -f ./vm.yaml 
 persistentvolumeclaim/mysql-pvc created
