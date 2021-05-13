@@ -766,6 +766,15 @@ Log in as wcpadmin@vsphere.local
 Select VM and open web console
 ```
 
+![wcpadmin](https://github.com/ogelbric/7u2a/blob/main/wcpadmin.png)
+
+![web console](https://github.com/ogelbric/7u2a/blob/main/webconsole.png)
+
+![login](https://github.com/ogelbric/7u2a/blob/main/loggedin.png)
+
+
+
+
 ## Another alias
 ```
 [root@orfdns 7u2a]# alias k
