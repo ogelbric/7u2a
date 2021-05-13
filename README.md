@@ -470,7 +470,7 @@ tkg-berlin-workers-jtz4k-75dddb8999-9n67g   poweredOn    3h42m
 tkg-berlin-workers-jtz4k-75dddb8999-djdt2   poweredOn    97m
 [root@orfdns 7u2a]# 
 ```
- ![running vm](https://github.com/ogelbric/7u2a/blob/main/runningvm.png)
+ ![running vm](https://github.com/ogelbric/7u2a/blob/main/vmrunning.png)
 
 
 
