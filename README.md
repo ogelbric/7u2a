@@ -165,9 +165,11 @@ To change context, use `kubectl config use-context <workload name>`
 Switched to context "namespace1000".
 [root@orfdns 7u2a]# k get tkc
 NAME         CONTROL PLANE   WORKER   DISTRIBUTION                     AGE     PHASE      TKR COMPATIBLE   UPDATES AVAILABLE
-tkg-berlin   1               1        v1.18.5+vmware.1-tkg.1.c40d30d   4m18s   creating   True             [1.19.7+vmware.1-tkg.1.fc82c41 1.18.15+vmware.1-tkg.1.600e412]
+tkg-berlin   1               3        v1.18.5+vmware.1-tkg.1.c40d30d   4m18s   creating   True             [1.19.7+vmware.1-tkg.1.fc82c41 1.18.15+vmware.1-tkg.1.600e412]
 [root@orfdns 7u2a]# 
 ```
+ ![guest cluster](https://github.com/ogelbric/7u2a/blob/main/guestcluster.png)
+
 
 ## Generate a ssh key on your server
 ```
