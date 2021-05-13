@@ -98,5 +98,17 @@ metadata:
  ## Manual step 
  As of this writting 5-13-2021 the VMservice is not part of the template and hence not part of the YAML and has to be set up by hand
  
+ ![vmservice 1](https://github.com/ogelbric/7u2a/blob/main/vmservice1.png)
  
+ ![vmservice 2](https://github.com/ogelbric/7u2a/blob/main/vmservice2.png)
+ 
+ ![vmservice 3](https://github.com/ogelbric/7u2a/blob/main/vmservice3.png)
+ 
+ ![vmservice 4](https://github.com/ogelbric/7u2a/blob/main/vmservice4.png)
+ 
+ ![vmservice 5](https://github.com/ogelbric/7u2a/blob/main/vmservice5.png)
+ 
+ ![vmservice 6](https://github.com/ogelbric/7u2a/blob/main/vmservice6.png)
+ 
+
  
